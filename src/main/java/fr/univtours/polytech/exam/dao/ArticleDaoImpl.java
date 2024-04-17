@@ -14,7 +14,6 @@ public class ArticleDaoImpl implements ArticleDao{
     @PersistenceContext(unitName = "mysqlexam")
     private EntityManager em;
 
-    @SuppressWarnings("unchecked") 
     @Override
     public void removeArticle(int id_article) {
         em.createNativeQuery("UPDATE ARTICLE SET NBRESTANT = NBRESTANT - 1 WHERE ID_ARTICLE = '"+id_article+"'"); 
