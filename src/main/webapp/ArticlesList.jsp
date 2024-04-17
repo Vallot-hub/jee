@@ -10,10 +10,10 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x"%>
     <h2>Items List</h2>
     <table border="1">
       <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Remaining</th>
-        <th>Quantity In Cart</th>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Restant</th>
+        <th></th>
       </tr>
       <x:parse xml="${itemsXml}" var="xmlItems" />
       <x:forEach select="$xmlItems/Items/Item" var="item">
