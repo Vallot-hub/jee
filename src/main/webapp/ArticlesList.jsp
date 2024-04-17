@@ -1,29 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="fr.univtours.polytech.exam.model.ArticleBean"%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Items List</title>
-  </head>
-  <body>
-    <h2>Items List</h2>
+<head>
+    <title>Articles List</title>
+</head>
+<body>
+    <h2>Articles List</h2>
     <table border="1">
-      <tr>
-        <th>Nom</th>
-        <th>Prix</th>
-        <th>Restant</th>
-        <th></th>
-      </tr>
-      <x:parse xml="${itemsXml}" var="xmlItems" />
-      <x:forEach select="$xmlItems/Items/Item" var="item">
         <tr>
-          <td><x:out select="$item/Name" /></td>
-          <td><x:out select="$item/Price" /></td>
-          <td><x:out select="$item/Remaining" /></td>
-          <td><x:out select="$item/QuantityInCart" /></td>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Restants</th>
         </tr>
-      </x:forEach>
+        <% 
+            List<ArticleBean> articles = (List<ArticleBean>)request.getAttribute("articles");
+            for(ArticleBean article : articles) {
+        %>
+            <tr>
+                <td><%= article.getName() %></td>
+                <td><%= article.getPrice() %></td>
+                <td><%= article.getNbRestant() %></td>
+            </tr>
+        <% 
+            }
+        %>
     </table>
-  </body>
+</body>
 </html>
